@@ -21,7 +21,7 @@
       ::      meloize:          >2
       ::      finalize:         >3
       ::
-      :: call=&
+      call=&
       ::
       jet=&           ::  jet re/registration
       ::
@@ -79,7 +79,8 @@
     =>  !@(call.verb ((outa:blot "<1 " entr seat.dad area.i.germ) .) .)
     =/  mope  (~(rue qui prot.less) have.i.germ)
     =.  mope  (~(cut qui mope) lord.dad cape.root.i.germ)
-    =/  more  [mope root.i.germ]
+    ~&  [sock.less form]
+    =/  more  [mope (muss sock.less form)]
     ::  propagate memoized subject needs
     =/  pant  (~(due qui prot.less) want.i.germ)
     =.  want.gen
@@ -108,7 +109,7 @@
     =>  !@(call.verb ((onto:blot "<2 " entr seat.dad [site seat area]:i.gorm) .) .)
     =/  mope  (~(rue qui prot.less) have.i.gorm)
     =.  mope  (~(cut qui mope) lord.dad cape.root.i.gorm)
-    =/  more  [mope root.i.gorm]
+    =/  more  [mope (muss sock.less form)]
     ::
     :+  ~  more
     %=    gen
@@ -342,7 +343,7 @@
         %-  ~(uni ca want)
         (~(gut by (~(due qui prot.more) cape.sock.more)) site |)
       ~(norm so (~(app ca such) sock.less))
-    =?  memo.gen  ?&(rect sane)
+    =?  memo.gen  ?&(rect sane !=(sutt |+0))  ::  don't memoize trivial formulas
       =/  have  (~(rel qui prot.more) site cape.sock.more)
       (~(add ja memo.gen) form [sutt want sock.more have area])
     =.  melo.gen
@@ -928,6 +929,68 @@
     ?:  |(?=(~ f) ?=(~ t))  ~
     [[%rose [" -> " ~ ~] (ren u.f) (ren u.t) ~] ~]
   --
+::
+::  ++muss: Nock interpreter on socks
+::
+++  muss
+  |=  [sub=sock fol=*]
+  ^-  sock
+  ?+    fol  |+0
+      [p=^ q=*]
+    =/  hed=sock  $(fol p.fol)
+    =/  tel=sock  $(fol q.fol)
+    (~(knit so hed) tel)
+  ::
+      [%0 p=@]
+    ?:  =(0 p.fol)  |+0
+    (~(pull so sub) p.fol)
+  ::
+      [%1 p=*]
+    &+p.fol
+  ::
+      [%2 p=* q=*]
+    =/  lof=sock  $(fol q.fol)
+    ::
+    ::  if formula is not fully known: give up
+    ?.  =(& cape.lof)  |+0
+    =/  bus=sock  $(fol p.fol)
+    $(sub bus, fol data.lof)
+  ::
+  ::  don't eval Nock 3-5 like in the analysis
+      [%3 p=*]
+    |+0
+  ::
+      [%4 p=*]
+    |+0
+  ::
+      [%5 p=* q=*]
+    |+0
+  ::
+      [%6 p=* q=* r=*]
+    =/  yes=sock  $(fol q.fol)
+    =/  nuh=sock  $(fol r.fol)
+    (~(purr so yes) nuh)
+  ::
+      [%7 p=* q=*]
+    =/  new=sock  $(fol p.fol)
+    $(sub new, fol q.fol)
+  ::
+      [%8 p=* q=*]
+    ?@  p.fol  $(fol [%7 [0+0 0+1] q.fol])  ::  same as in ++scan
+    $(fol [%7 [p.fol 0+1] q.fol])
+  ::
+      [%9 p=@ q=*]
+    $(fol [%7 q.fol %2 0+1 0+p.fol])
+  ::
+      [%10 [p=@ q=*] r=*]
+    ?:  =(0 p.fol)  |+~
+    =/  don=sock  $(fol q.fol)
+    =/  rec=sock  $(fol r.fol)
+    (~(darn so rec) p.fol don)
+  ::
+      [%11 * p=*]  :: hints are ignored
+    $(fol p.fol)
+  ==
 --
 ::  utility types
 ::
