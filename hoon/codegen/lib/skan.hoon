@@ -21,7 +21,7 @@
       ::      meloize:          >2
       ::      finalize:         >3
       ::
-      :: call=&
+      call=&
       ::
       jet=&           ::  jet re/registration
       ::
@@ -71,6 +71,8 @@
     ~/  %memo
     |=  [entr=@hail form=* less=naan]
     ^-  (unit [naan lore])
+    ~?  =(0x2 entr)  ['(slam once) less' less]
+    ~?  =(0x5 entr)  ['(slam dabl) less' less]
     =/  germ  (~(get ja memo.gen) form)
     |-  ^-  (unit [naan lore])
     ?~  germ  ~
@@ -78,7 +80,10 @@
       $(germ t.germ)
     =>  !@(call.verb ((outa:blot "<1 " entr seat.dad area.i.germ) .) .)
     =/  mope  (~(rue qui prot.less) have.i.germ)
+    ~?  =(0x5 entr)  ['(slam once) mope' mope]  ::  mope from memo belongs to (slam once)
     =.  mope  (~(cut qui mope) lord.dad cape.root.i.germ)
+    ~?  =(0x5 entr)  ['(slam dabl) mope' mope]  ::  updated mope belongs to (slam dabl)
+    ~?  =(0x5 entr)  [%root root.i.germ]
     =/  more  [mope root.i.germ]
     ::  propagate memoized subject needs
     =/  pant  (~(due qui prot.less) want.i.germ)

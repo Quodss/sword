@@ -93,7 +93,8 @@
       ?^  bak
         $(for (flop bak), bak ~)
       ?>(&((~(has by wan) 0w0) (~(has by wan) 0w1)) wan)
-    =^  b  nog  (norm i.for nog (link i.for fum))
+    :: =^  b  nog  (norm i.for nog (link i.for fum))
+    =/  b  (link i.for fum)
     =/  nex  (flop (skip (heed bend.b) ~(has in hav)))
     %=  $
       for  t.for
