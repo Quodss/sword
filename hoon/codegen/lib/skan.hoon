@@ -79,7 +79,6 @@
     =>  !@(call.verb ((outa:blot "<1 " entr seat.dad area.i.germ) .) .)
     =/  mope  (~(rue qui prot.less) have.i.germ)
     =.  mope  (~(cut qui mope) lord.dad cape.root.i.germ)
-    ~&  [sock.less form]
     =/  more  [mope (muss sock.less form)]
     ::  propagate memoized subject needs
     =/  pant  (~(due qui prot.less) want.i.germ)
@@ -935,44 +934,51 @@
 ++  muss
   |=  [sub=sock fol=*]
   ^-  sock
-  ?+    fol  |+0
+  =<  -
+  =|  queu=(set [sock *])
+  |-  ^-  [sock _queu]
+  ?:  (~(has in queu) [sub fol])  [|+0 queu]
+  =.  queu  (~(put in queu) sub fol)
+  =;  [pro=sock queu1=(set [sock *])]
+    [pro (~(del in queu1) sub fol)]
+  ?+    fol  [|+0 queu]
       [p=^ q=*]
-    =/  hed=sock  $(fol p.fol)
-    =/  tel=sock  $(fol q.fol)
-    (~(knit so hed) tel)
+    =^  hed=sock  queu  $(fol p.fol)
+    =^  tel=sock  queu  $(fol q.fol)
+    [(~(knit so hed) tel) queu]
   ::
       [%0 p=@]
-    ?:  =(0 p.fol)  |+0
-    (~(pull so sub) p.fol)
+    ?:  =(0 p.fol)  [|+0 queu]
+    [(~(pull so sub) p.fol) queu]
   ::
       [%1 p=*]
-    &+p.fol
+    [&+p.fol queu]
   ::
       [%2 p=* q=*]
-    =/  lof=sock  $(fol q.fol)
+    =^  lof=sock  queu  $(fol q.fol)
     ::
     ::  if formula is not fully known: give up
-    ?.  =(& cape.lof)  |+0
-    =/  bus=sock  $(fol p.fol)
+    ?.  =(& cape.lof)  [|+0 queu]
+    =^  bus=sock  queu  $(fol p.fol)
     $(sub bus, fol data.lof)
   ::
   ::  don't eval Nock 3-5 like in the analysis
       [%3 p=*]
-    |+0
+    [|+0 queu]
   ::
       [%4 p=*]
-    |+0
+    [|+0 queu]
   ::
       [%5 p=* q=*]
-    |+0
+    [|+0 queu]
   ::
       [%6 p=* q=* r=*]
-    =/  yes=sock  $(fol q.fol)
-    =/  nuh=sock  $(fol r.fol)
-    (~(purr so yes) nuh)
+    =^  yes=sock  queu  $(fol q.fol)
+    =^  nuh=sock  queu  $(fol r.fol)
+    [(~(purr so yes) nuh) queu]
   ::
       [%7 p=* q=*]
-    =/  new=sock  $(fol p.fol)
+    =^  new=sock  queu  $(fol p.fol)
     $(sub new, fol q.fol)
   ::
       [%8 p=* q=*]
@@ -983,10 +989,10 @@
     $(fol [%7 q.fol %2 0+1 0+p.fol])
   ::
       [%10 [p=@ q=*] r=*]
-    ?:  =(0 p.fol)  |+~
-    =/  don=sock  $(fol q.fol)
-    =/  rec=sock  $(fol r.fol)
-    (~(darn so rec) p.fol don)
+    ?:  =(0 p.fol)  [|+~ queu]
+    =^  don=sock  queu  $(fol q.fol)
+    =^  rec=sock  queu  $(fol r.fol)
+    [(~(darn so rec) p.fol don) queu]
   ::
       [%11 * p=*]  :: hints are ignored
     $(fol p.fol)
