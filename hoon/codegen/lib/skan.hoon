@@ -79,12 +79,9 @@
     =>  !@(call.verb ((outa:blot "<1 " entr seat.dad area.i.germ) .) .)
     =/  mope  (~(rue qui prot.less) have.i.germ)
     =.  mope  (~(cut qui mope) lord.dad cape.root.i.germ)
-    =/  call=(unit info)  (~(get by call.gen) site.i.germ)
     =*  root  root.i.germ
+    =/  only=plop  only.i.germ
     =/  room=sock
-      ?~  call  root
-      ?~  only.u.call  root
-      =/  only=plop  u.only.u.call
       |-  ^-  sock
       ?~  only  root
       ?^  n.only  (~(pull so sock.less) i.n.only)
@@ -93,6 +90,12 @@
       (~(knit so hed) tel)
     ::
     =/  more  [mope room]
+    =/  lone
+      %-  ~(run in only)
+      |=  l=(list @)
+      =/  len  (lent l)
+      (reap len entr)
+    ::
     ::  propagate memoized subject needs
     =/  pant  (~(due qui prot.less) want.i.germ)
     =.  want.gen
@@ -100,7 +103,7 @@
       |=  [@hail a=cape b=cape]
       ~(cut ca (~(uni ca a) b))
     =.  call.gen
-      (~(put by call.gen) entr [less more form ~ & ~ seat.dad area.i.germ ~])
+      (~(put by call.gen) entr [less more form ~ & ~ seat.dad area.i.germ lone])
     ::
     `[more gen]
   ::
@@ -123,12 +126,9 @@
     =>  !@(call.verb ((onto:blot "<2 " entr seat.dad [site seat area]:i.gorm) .) .)
     =/  mope  (~(rue qui prot.less) have.i.gorm)
     =.  mope  (~(cut qui mope) lord.dad cape.root.i.gorm)
-    =/  call=(unit info)  (~(get by call.gen) site.i.gorm)
     =*  root  root.i.gorm
     =/  room=sock
-      ?~  call  root
-      ?~  only.u.call  root
-      =/  only=plop  u.only.u.call
+      =/  only=plop  only.i.gorm
       |-  ^-  sock
       ?~  only  root
       ?^  n.only  (~(pull so sock.less) i.n.only)
@@ -283,7 +283,7 @@
   ::
   ++  bide
     ~/  %bide
-    |=  [entr=@hail form=* less=naan more=naan]
+    |=  [entr=@hail form=* less=naan more=naan only=plop]
     ^+  melo.gen
     =>  !@(call.verb ((outa:blot ">2 " entr seat.dad area.gen) .) .)
     =/  want  *cape
@@ -298,7 +298,7 @@
       =/  n=noon  [p sock.l]
       [[c t s n] loom]         :: XX skip if ?=(~ p) ?
       ::  XX remove sutt and want
-    (~(add ja melo.gen) form [[sutt want sock.more have area.gen entr] less seat.dad loom])
+    (~(add ja melo.gen) form [[sutt want sock.more have area.gen only] entr less seat.dad loom])
   ::
   ::  +mend: fixpoints to validate pseudo-recursive estimates
   ::
@@ -372,7 +372,7 @@
       ~(norm so (~(app ca such) sock.less))
     =?  memo.gen  ?&(rect sane)
       =/  have  (~(rel qui prot.more) site cape.sock.more)
-      (~(add ja memo.gen) form [sutt want sock.more have area entr])
+      (~(add ja memo.gen) form [sutt want sock.more have area only])
     =.  melo.gen
       ?~  mel=(~(get by melo.gen) form)
         melo.gen
@@ -616,12 +616,12 @@
     =.  prot.more  (~(cut qui prot.more) lord.dad cape.sock.more)
     :-  more
     ::  write to call table
-    =.  call.gen  (~(put by call.gen) entr [less more form `load dire.gen ~ seat.dad area.gen `only])
+    =.  call.gen  (~(put by call.gen) entr [less more form `load dire.gen ~ seat.dad area.gen only])
     =/  wise      (~(get ja wait.gen) entr)
     =.  wait.gen  (~(del by wait.gen) entr)
     ?:  =(~ wise)
       :: no finalizing here
-      gen(melo (bide entr form less more))
+      gen(melo (bide entr form less more only))
     ::  fixed-point loops to propagate their needs and check that they are really loops
     =^  sane=?  gen  mend
     ::  finalize waiting callsites
@@ -978,7 +978,7 @@
               remos=(set @hail)
               seat=(unit spot)
               area=(unit spot)
-              only=(unit plop)
+              only=plop
           ==
 ::
 ::    subject requirements for callsites
@@ -1001,9 +1001,9 @@
   ==
 ::
 ::    analysis memoization entry
-+$  meme  [soot=sock want=cape root=sock have=plop area=(unit spot) site=@hail]
++$  meme  [soot=sock want=cape root=sock have=plop area=(unit spot) only=plop]
 ::
 ::    loop-local analysis memoization entry
 ::  XX skip meal, remove [soot] and [want]
-+$  meal  [meme less=naan seat=(unit spot) loom=(list [c=@hail t=@hail s=sock n=noon])]
++$  meal  [meme site=@hail less=naan seat=(unit spot) loom=(list [c=@hail t=@hail s=sock n=noon])]
 --

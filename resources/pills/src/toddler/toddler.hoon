@@ -2,7 +2,7 @@
 ::  scaffolding directory.
 ::
 /+  playpen
-!.
+!:
 =/  core
   =>  playpen
   !=
@@ -95,4 +95,9 @@
     arvo  .*([arvo -.epic] [%9 2 %10 [6 %0 3] %0 2])
   ==
 --
-[%pill %toddler [aeon .*(playpen core) ~] ~ ~]
+:: [%pill %toddler [aeon .*(playpen core) ~] ~ ~]
+:+  aeon  .*(playpen core)
+^-  (list [@da wire wasp])
+:~
+  [*@da / wack+`@`0]
+==

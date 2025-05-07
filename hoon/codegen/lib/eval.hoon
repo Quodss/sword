@@ -2,6 +2,7 @@
 =>  $:line
 =*  line  .
 =/  ip=?  |
+=/  je=?  |
 |%
 ++  this  .
 ++  fire
@@ -12,10 +13,15 @@
         (mack gat(+6 +6.sam) [9 2 0 1])
       --
   ^~  ^-  (map [path @] $-(* (unit)))
+  :: ~
   %-  malt
   :~
-    [[/dec/one/'k.139' 1] (fake dec)]
-    [[/add/one/'k.139' 1] (fake add)]
+    [[/dec/'a.50' 1] (fake dec)]
+    [[/add/'a.50' 1] (fake add)]
+    [[/sub/'a.50' 1] (fake sub)]
+    [[/mul/'a.50' 1] (fake mul)]
+    [[/div/'a.50' 1] (fake div)]
+    [[/mod/'a.50' 1] (fake mod)]
   ==
 ++  hour
   =*  thus  .
@@ -246,13 +252,13 @@
       =/  gate=(unit $-(* (unit)))  (~(get by fire) n.i)
       =/  subj  (g u.i)
       ?.  ?=(~ gate)
-        ~&  caf-fire+n.i
+        ~?  je  caf-fire+n.i
         =/  r  (u.gate subj)
         ?~  r
           ~&  [indy=indy b=b i=i]
           [%2 mean]
-        [%0 u.r]
-      ~&  caf-miss+n.i
+        (goto(rasp (p d.i u.r)) t.i)
+      ~?  je  caf-miss+n.i
       =/  pyle  (~(got by hill.mont) a.i)
       =/  r
         %=  $
