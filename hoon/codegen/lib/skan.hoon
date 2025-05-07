@@ -71,8 +71,6 @@
     ~/  %memo
     |=  [entr=@hail form=* less=naan]
     ^-  (unit [naan lore])
-    ~?  =(0x2 entr)  ['(slam once) less' less]
-    ~?  =(0x5 entr)  ['(slam dabl) less' less]
     =/  germ  (~(get ja memo.gen) form)
     |-  ^-  (unit [naan lore])
     ?~  germ  ~
@@ -80,18 +78,30 @@
       $(germ t.germ)
     =>  !@(call.verb ((outa:blot "<1 " entr seat.dad area.i.germ) .) .)
     =/  mope  (~(rue qui prot.less) have.i.germ)
-    ~?  =(0x5 entr)  ['(slam once) mope' mope]  ::  mope from memo belongs to (slam once)
     =.  mope  (~(cut qui mope) lord.dad cape.root.i.germ)
-    ~?  =(0x5 entr)  ['(slam dabl) mope' mope]  ::  updated mope belongs to (slam dabl)
-    ~?  =(0x5 entr)  [%root root.i.germ]
-    =/  more  [mope root.i.germ]
+    =/  call=(unit info)  (~(get by call.gen) site.i.germ)
+    =*  root  root.i.germ
+    =/  room=sock
+      ?~  call  root
+      ?~  only.u.call  root
+      =/  only=plop  u.only.u.call
+      |-  ^-  sock
+      ?~  only  root
+      ?^  n.only  (~(pull so sock.less) i.n.only)
+      =/  hed=sock  $(only l.only, root (~(pull so root) 2))
+      =/  tel=sock  $(only r.only, root (~(pull so root) 3))
+      (~(knit so hed) tel)
+    ::
+    =/  more  [mope room]
     ::  propagate memoized subject needs
     =/  pant  (~(due qui prot.less) want.i.germ)
     =.  want.gen
       %-  (~(uno by want.gen) pant)
       |=  [@hail a=cape b=cape]
       ~(cut ca (~(uni ca a) b))
-    =.  call.gen  (~(put by call.gen) entr [less more form ~ & ~ seat.dad area.i.germ])
+    =.  call.gen
+      (~(put by call.gen) entr [less more form ~ & ~ seat.dad area.i.germ ~])
+    ::
     `[more gen]
   ::
   ::  +melo: check for in-progress analysis
@@ -113,7 +123,20 @@
     =>  !@(call.verb ((onto:blot "<2 " entr seat.dad [site seat area]:i.gorm) .) .)
     =/  mope  (~(rue qui prot.less) have.i.gorm)
     =.  mope  (~(cut qui mope) lord.dad cape.root.i.gorm)
-    =/  more  [mope root.i.gorm]
+    =/  call=(unit info)  (~(get by call.gen) site.i.gorm)
+    =*  root  root.i.gorm
+    =/  room=sock
+      ?~  call  root
+      ?~  only.u.call  root
+      =/  only=plop  u.only.u.call
+      |-  ^-  sock
+      ?~  only  root
+      ?^  n.only  (~(pull so sock.less) i.n.only)
+      =/  hed=sock  $(only l.only, root (~(pull so root) 2))
+      =/  tel=sock  $(only r.only, root (~(pull so root) 3))
+      (~(knit so hed) tel)
+    ::
+    =/  more  [mope room]
     ::
     :+  ~  more
     %=    gen
@@ -275,7 +298,7 @@
       =/  n=noon  [p sock.l]
       [[c t s n] loom]         :: XX skip if ?=(~ p) ?
       ::  XX remove sutt and want
-    (~(add ja melo.gen) form [[sutt want sock.more have area.gen] entr less seat.dad loom])
+    (~(add ja melo.gen) form [[sutt want sock.more have area.gen entr] less seat.dad loom])
   ::
   ::  +mend: fixpoints to validate pseudo-recursive estimates
   ::
@@ -349,11 +372,11 @@
       ~(norm so (~(app ca such) sock.less))
     =?  memo.gen  ?&(rect sane)
       =/  have  (~(rel qui prot.more) site cape.sock.more)
-      (~(add ja memo.gen) form [sutt want sock.more have area])
+      (~(add ja memo.gen) form [sutt want sock.more have area entr])
     =.  melo.gen
       ?~  mel=(~(get by melo.gen) form)
         melo.gen
-      =/  lit  (skip u.mel |=([^ lite=@hail *] =(site lite)))
+      =/  lit  (skip u.mel |=(m=meal =(site site.m)))
       :: =+  [len nel]=[(lent lit) (lent u.mel)]
       :: ~?  !=(len nel)  [%del-melo nel len]
       ?:  =(~ lit)
@@ -589,10 +612,11 @@
         [[[%elf rend pond] [~ | ~]] gen]
       ==
     ::
+    =/  only  (~(rel qui prot.more) entr cape.sock.more)
     =.  prot.more  (~(cut qui prot.more) lord.dad cape.sock.more)
     :-  more
     ::  write to call table
-    =.  call.gen  (~(put by call.gen) entr [less more form `load dire.gen ~ seat.dad area.gen])
+    =.  call.gen  (~(put by call.gen) entr [less more form `load dire.gen ~ seat.dad area.gen `only])
     =/  wise      (~(get ja wait.gen) entr)
     =.  wait.gen  (~(del by wait.gen) entr)
     ?:  =(~ wise)
@@ -945,7 +969,17 @@
 +$  noon  [=plop =sock]
 ::
 ::    callsite information
-+$  cafe  (map @hail [less=naan more=naan form=* load=(unit nomm) rect=? remos=(set @hail) seat=(unit spot) area=(unit spot)])
++$  cafe  (map @hail info)
++$  info  $:  less=naan
+              more=naan
+              form=*
+              load=(unit nomm)
+              rect=?
+              remos=(set @hail)
+              seat=(unit spot)
+              area=(unit spot)
+              only=(unit plop)
+          ==
 ::
 ::    subject requirements for callsites
 +$  urge  (map @hail cape)
@@ -967,9 +1001,9 @@
   ==
 ::
 ::    analysis memoization entry
-+$  meme  [soot=sock want=cape root=sock have=plop area=(unit spot)]
++$  meme  [soot=sock want=cape root=sock have=plop area=(unit spot) site=@hail]
 ::
 ::    loop-local analysis memoization entry
 ::  XX skip meal, remove [soot] and [want]
-+$  meal  [meme site=@hail less=naan seat=(unit spot) loom=(list [c=@hail t=@hail s=sock n=noon])]
++$  meal  [meme less=naan seat=(unit spot) loom=(list [c=@hail t=@hail s=sock n=noon])]
 --
