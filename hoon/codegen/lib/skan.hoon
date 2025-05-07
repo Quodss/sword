@@ -90,11 +90,6 @@
       (~(knit so hed) tel)
     ::
     =/  more  [mope room]
-    =/  lone
-      %-  ~(run in only)
-      |=  l=(list @)
-      =/  len  (lent l)
-      (reap len entr)
     ::
     ::  propagate memoized subject needs
     =/  pant  (~(due qui prot.less) want.i.germ)
@@ -103,7 +98,7 @@
       |=  [@hail a=cape b=cape]
       ~(cut ca (~(uni ca a) b))
     =.  call.gen
-      (~(put by call.gen) entr [less more form ~ & ~ seat.dad area.i.germ lone])
+      (~(put by call.gen) entr [less more form ~ & ~ seat.dad area.i.germ only])
     ::
     `[more gen]
   ::
