@@ -91,7 +91,9 @@
     =/  room=sock
       |-  ^-  sock
       ?~  only  root
-      ?^  n.only  (~(pull so sock.less) i.n.only)
+      ?^  n.only
+        ?^  t.n.only  ~|  only  !!
+        (~(pull so sock.less) i.n.only)
       =/  hed=sock  $(only l.only, root (~(pull so root) 2))
       =/  tel=sock  $(only r.only, root (~(pull so root) 3))
       (~(knit so hed) tel)
@@ -140,7 +142,9 @@
     =/  room=sock
       |-  ^-  sock
       ?~  only  root
-      ?^  n.only  (~(pull so sock.less) i.n.only)
+      ?^  n.only
+        ?^  t.n.only  ~|  only  !!
+        (~(pull so sock.less) i.n.only)
       =/  hed=sock  $(only l.only, root (~(pull so root) 2))
       =/  tel=sock  $(only r.only, root (~(pull so root) 3))
       (~(knit so hed) tel)
@@ -806,8 +810,8 @@
   ++  int
     |=  poor=prot
     ^-  prot
-    ?~  prog  ~
-    ?~  poor  ~
+    ?~  prog  poor
+    ?~  poor  prog
     =/  n  ~(tap in (~(gas in (~(gas in *(set peon)) n.poor)) n.prog))
     [n $(prog l.prog, poor l.poor) $(prog r.prog, poor r.poor)]
   ::
