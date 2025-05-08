@@ -79,9 +79,11 @@
     =>  !@(call.verb ((outa:blot "<1 " entr seat.dad area.i.germ) .) .)
     =/  mope  (~(rue qui prot.less) have.i.germ)
     =.  mope  (~(cut qui mope) lord.dad cape.root.i.germ)
-    =*  root  root.i.germ
     =/  only=plop  only.i.germ
+    =/  lone=prot  (~(run in only) (curr turn (lead entr)))
+    =.  mope  (~(int qui mope) lone)
     =/  room=sock
+    =*  root  root.i.germ
       |-  ^-  sock
       ?~  only  root
       ?^  n.only  (~(pull so sock.less) i.n.only)
@@ -121,9 +123,11 @@
     =>  !@(call.verb ((onto:blot "<2 " entr seat.dad [site seat area]:i.gorm) .) .)
     =/  mope  (~(rue qui prot.less) have.i.gorm)
     =.  mope  (~(cut qui mope) lord.dad cape.root.i.gorm)
+    =/  only=plop  only.i.gorm
+    =/  lone=prot  (~(run in only) (curr turn (lead entr)))
+    =.  mope  (~(int qui mope) lone)
     =*  root  root.i.gorm
     =/  room=sock
-      =/  only=plop  only.i.gorm
       |-  ^-  sock
       ?~  only  root
       ?^  n.only  (~(pull so sock.less) i.n.only)
@@ -792,8 +796,8 @@
   ++  int
     |=  poor=prot
     ^-  prot
-    ?~  prog  poor
-    ?~  poor  prog
+    ?~  prog  ~
+    ?~  poor  ~
     =/  n  ~(tap in (~(gas in (~(gas in *(set peon)) n.poor)) n.prog))
     [n $(prog l.prog, poor l.poor) $(prog r.prog, poor r.poor)]
   ::
