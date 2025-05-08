@@ -359,9 +359,6 @@
     ~/  %seal
     |=  [entr=@hail sane=? wise=(list @hail)]
     ^-  lore
-    =>  ::  XX also log kid
-        !@(call.verb ((outa:blot ">3 " entr seat.dad area.gen) .) .)
-    :: ~?  ?=([* * *] wise)  wise=(tail (flop wise))
     ?>  =(entr (rear wise)) :: current callsite should be last item of finalization list
     %+  roll  wise
     |=  [site=@hail =_gen]
@@ -627,6 +624,11 @@
     ?:  =(~ wise)
       :: no finalizing here
       gen(melo (bide entr form less more only))
+    =>  ::  XX also log kid
+        !@(call.verb ((outa:blot ">3 " entr seat.dad area.gen) .) .)
+    ~&  wise=(tail (flop wise))
+    ~&  ~(key by loop.gen)
+    ::
     ::  fixed-point loops to propagate their needs and check that they are really loops
     =^  sane=?  gen  mend
     ::  finalize waiting callsites
