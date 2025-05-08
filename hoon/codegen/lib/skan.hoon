@@ -77,16 +77,12 @@
     ?.  (~(huge so soot.i.germ) sock.less)
       $(germ t.germ)
     =>  !@(call.verb ((outa:blot "<1 " entr seat.dad area.i.germ) .) .)
-    =/  mope  (~(rue qui prot.less) have.i.germ)
-    =.  mope  (~(cut qui mope) lord.dad cape.root.i.germ)
     =/  only=plop  only.i.germ
-    =/  lone=prot
-      |-  ^-  prot
-      ?~  only  ~
-      :-  (turn n.only (lead entr))
-      [$(only l.only) $(only r.only)]
+    =/  lone  (~(rue qui prot.less) only)
+    =/  mope  (~(rue qui prot.less) have.i.germ)
+    =.  mope  (~(uni qui mope) lone)
+    =.  mope  (~(cut qui mope) lord.dad cape.root.i.germ)
     ::
-    =.  mope  (~(int qui mope) lone)
     =*  root  root.i.germ
     =/  room=sock
       |-  ^-  sock
@@ -128,16 +124,12 @@
     ?.  (~(huge so tote) sock.less)
       $(gorm t.gorm)
     =>  !@(call.verb ((onto:blot "<2 " entr seat.dad [site seat area]:i.gorm) .) .)
-    =/  mope  (~(rue qui prot.less) have.i.gorm)
-    =.  mope  (~(cut qui mope) lord.dad cape.root.i.gorm)
     =/  only=plop  only.i.gorm
-    =/  lone=prot
-      |-  ^-  prot
-      ?~  only  ~
-      :-  (turn n.only (lead entr))
-      [$(only l.only) $(only r.only)]
+    =/  lone  (~(rue qui prot.less) only)
+    =/  mope  (~(rue qui prot.less) have.i.gorm)
+    =.  mope  (~(uni qui mope) lone)
+    =.  mope  (~(cut qui mope) lord.dad cape.root.i.gorm)
     ::
-    =.  mope  (~(int qui mope) lone)
     =*  root  root.i.gorm
     =/  room=sock
       |-  ^-  sock
@@ -161,7 +153,7 @@
         loop.gen  :: NB: got:by has crashed here
       =/  rot  (~(rue qui prot.less) plop.n)
       %+  ~(put by loop.gen)  c
-      u.op(prot.l (~(int qui rot) prot.l.u.op))
+      u.op(prot.l (~(uni qui rot) prot.l.u.op))
     ::
         call
       =/  lac  (~(got by call.gen) site.i.gorm)
@@ -810,6 +802,19 @@
   ++  int
     |=  poor=prot
     ^-  prot
+    ?~  prog  ~
+    ?~  poor  ~
+    =/  n=(list peon)
+      =/  peons-poor=(set peon)  (~(gas in *(set peon)) n.poor)
+      =/  peons-prog=(set peon)  (~(gas in *(set peon)) n.prog)
+      =/  peons-intr=(set peon)  (~(int in peons-prog) peons-poor)
+      ~(tap in peons-intr)
+    ::
+    [n $(prog l.prog, poor l.poor) $(prog r.prog, poor r.poor)]
+  ::
+  ++  uni
+    |=  poor=prot
+    ^-  prot
     ?~  prog  poor
     ?~  poor  prog
     =/  n  ~(tap in (~(gas in (~(gas in *(set peon)) n.poor)) n.prog))
@@ -859,7 +864,7 @@
     =.  t
       %+  roll  n.prop
       |:  [a=*@ t=t]
-      (int(prog (ask a)) t)
+      (uni(prog (ask a)) t)  ::  union?
     ?~  t
       =/  l  $(prop l.prop)
       =/  r  $(prop r.prop)
