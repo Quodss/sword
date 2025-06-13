@@ -39,7 +39,7 @@
   ::
   ++  bake
     ^+  p
-    =.  p  fuse
+    :: =.  p  fuse  XX  causes a crash in eval
     ::  XX temporary: turn hip/phi into mov so we can run this as-is
     ::  note that it's not safe to do mov coalescing on the output of this
     ::  since we may now have multiple %mov's that target one register
@@ -93,8 +93,7 @@
       ?^  bak
         $(for (flop bak), bak ~)
       ?>(&((~(has by wan) 0w0) (~(has by wan) 0w1)) wan)
-    :: =^  b  nog  (norm i.for nog (link i.for fum))
-    =/  b  (link i.for fum)
+    =^  b  nog  (norm i.for nog (link i.for fum))
     =/  nex  (flop (skip (heed bend.b) ~(has in hav)))
     %=  $
       for  t.for

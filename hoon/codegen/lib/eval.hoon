@@ -236,6 +236,7 @@
       (goto(rasp (p d.i product.r)) t.i)
     ::
         %cal
+      ~&  cal+a.i
       =/  pyle  (~(got by hill.mont) a.i)
       =/  r
         %=  $
@@ -273,6 +274,7 @@
     ::
         %lnt  (tine (g u.i) (g f.i))
         %jmp
+      ~&  jmp+a.i
       =/  pyle  (~(got by hill.mont) a.i)
       %=  $
         indy  a.i
